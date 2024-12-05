@@ -1,0 +1,1013 @@
+<html><head><base href="." /><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>عيادة د. وركاء للنساء والتوليد</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+body {
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1366px; /* Standard laptop width */
+  margin: 0 auto;
+  padding: 20px;
+  min-height: calc(100vh - 40px); /* Full height minus padding */
+}
+
+.header {
+  background: #e91e63;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background: #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #e91e63;
+  color: white;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+  max-width: 100%;
+}
+
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.form-group.price-field {
+  background: #fff5f8;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e91e63;
+}
+
+.price-field input {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #e91e63;
+}
+
+.medical-history {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.visit-card {
+  background: #f8f8f8;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+}
+
+.btn:hover {
+  background: #d81b60;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #4CAF50;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 4px;
+  display: none;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.dashboard {
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 2px solid #e91e63;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.stats-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid #e91e63;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.calendar-view {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.calendar-day {
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+  min-height: 100px;
+}
+
+.appointment-slot {
+  background: #fff5f8;
+  padding: 5px;
+  margin: 2px 0;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.pregnancy-timeline {
+  position: relative;
+  height: 80px;
+  background: #f8f8f8;
+  border-radius: 40px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.progress-indicator {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(90deg, #ff69b4, #e91e63);
+  transition: width 0.3s;
+}
+
+.receipt {
+  padding: 20px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.receipt-header {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e91e63;
+  padding-bottom: 10px;
+}
+
+.receipt-logo {
+  width: 80px;
+  margin: 0 auto 10px;
+}
+
+.receipt-details {
+  margin: 20px 0;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 5px 0;
+}
+
+.treatment-section {
+  margin: 20px 0;
+}
+
+.treatment-section h3 {
+  margin-bottom: 10px;
+  color: #e91e63;
+}
+
+.doctor-signature {
+  text-align: left;
+  margin-top: 30px;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .print-footer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm; /* A4 width */
+    height: 297mm; /* A4 height */
+    margin: 0;
+    padding: 15mm;
+    visibility: visible;
+  }
+
+  .print-footer * {
+    visibility: visible;
+  }
+
+  /* Hide everything except receipt during print */
+  .container > *:not(.print-footer),
+  .header,
+  .tabs,
+  .dashboard,
+  .form-container,
+  .back-button,
+  .notification {
+    display: none !important;
+  }
+}
+
+.container > div {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.container > div[style*="display: none"] {
+  opacity: 0;
+}
+
+.container > div[style*="display: block"] {
+  opacity: 1;
+}
+
+.back-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.checkup-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.checkup-item {
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.appointments-list {
+  margin: 10px 0;
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.pregnancy-tracking {
+  margin-top: 20px;
+}
+
+.vitals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.vital-input {
+  display: flex;
+  align-items: center;
+}
+
+.pregnancy-notes {
+  margin-top: 20px;
+}
+
+.checkup-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stats-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Optimize for laptop screens */
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 20px 40px;
+  }
+  
+  .dashboard {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    max-width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize form fields for laptop screens */
+.form-group {
+  margin-bottom: 15px;
+  max-width: 100%;
+}
+
+.dashboard-card svg {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.dashboard-card h3 {
+  font-size: 16px;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+  <div class="print-header">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZD0iTTUwIDVDMjUuMiA1IDUgMjUuMiA1IDUwczIwLjIgNDUgNDUgNDUgNDUtMjAuMiA0NS00NVM3NC44IDUgNTAgNXptMCA4MGMtMTkuMyAwLTM1LTE1LjctMzUtMzVzMTUuNy0zNSAzNS0zNSAzNSAxNS43IDM1IDM1LTE1LjcgMzUtMzUgMzV6Ii8+PC9zdmc+" alt="شعار العيادة" style="width: 60px; height: 60px;">
+    <h2>عيادة د. وركاء للنساء والتوليد</h2>
+    <p>استشارية النساء والتوليد والعقم</p>
+    <p>هاتف: 123-456-789</p>
+    <hr>
+  </div>
+
+  <div class="container">
+    <div class="header">
+      <h1>عيادة د. وركاء للنساء والتوليد</h1>
+    </div>
+
+    <button onclick="showTab('home')" class="back-button" id="backButton" style="display: none;">
+      العودة للرئيسية  
+    </button>
+
+    <div class="dashboard">
+      <div class="dashboard-card" onclick="showTab('newVisit')">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+        </svg>
+        <h3>حجز موعد جديد</h3>
+      </div>
+
+      <div class="dashboard-card" onclick="showTab('medicalHistory')">
+        <svg viewBox="0 0 24 24">
+          <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
+        </svg>
+        <h3>عرض المرضى</h3>
+      </div>
+
+      <div class="dashboard-card" onclick="showTab('reports')">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+          <path d="M7 12h2v5H7zm4-3h2v8h-2zm4-3h2v11h-2z"/>
+        </svg>
+        <h3>التقارير</h3>
+      </div>
+
+      <div class="dashboard-card" onclick="showTab('settings')">
+        <svg viewBox="0 0 24 24">
+          <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+        </svg>
+        <h3>الإعدادات</h3>
+      </div>
+      
+      <div class="dashboard-card" onclick="showTab('appointments')">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 3h-1V2h-2v1H8V2H6v1H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM5 7V5h14v2H5z"/>
+        </svg>
+        <h3>جدول المواعيد</h3>
+      </div>
+
+      <div class="dashboard-card" onclick="showTab('pregnancyFollowup')">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+          <path d="M12 17l5-5h-4V7h-2v5H7z"/>
+        </svg>
+        <h3>متابعة الحمل</h3>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="showTab('newVisit')">زيارة جديدة</div>
+      <div class="tab" onclick="showTab('medicalHistory')">السجل الطبي</div>
+    </div>
+
+    <div id="newVisitSection">
+      <div class="form-container">
+        <h2>تسجيل زيارة جديدة</h2>
+        <div class="form-group">
+          <label>البحث عن المريضة</label>
+          <input type="text" placeholder="ابحث بالاسم أو رقم الهاتف..." onkeyup="searchPatient(this.value)">
+        </div>
+        <form onsubmit="saveVisit(event)">
+          <div class="form-group">
+            <label>اسم المريضة</label>
+            <input type="text" id="patientName" required>
+          </div>
+          
+          <div class="form-group">
+            <label>العمر</label>
+            <input type="number" id="patientAge" required>
+          </div>
+          
+          <div class="form-group">
+            <label>رقم الهاتف</label>
+            <input type="tel" id="patientPhone" required>
+          </div>
+          
+          <div class="form-group">
+            <label>نوع الزيارة</label>
+            <select id="visitType" required>
+              <option value="first">زيارة أولى</option>
+              <option value="followup">متابعة</option>
+              <option value="pregnancy">متابعة حمل</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>الحالة الصحية</label>
+            <select id="healthStatus" required>
+              <option value="normal">طبيعية</option>
+              <option value="pregnant">حامل</option>
+              <option value="chronic">أمراض مزمنة</option>
+            </select>
+          </div>
+          
+          <div id="pregnancyDetails" style="display: none;">
+            <div class="form-group">
+              <label>أسبوع الحمل</label>
+              <input type="number" id="pregnancyWeek">
+            </div>
+            
+            <div class="form-group">
+              <label>تاريخ آخر دورة شهرية</label>
+              <input type="date" id="lastPeriod" onchange="calculatePregnancyProgress(this.value)">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>الشكوى الرئيسية</label>
+            <textarea id="mainComplaint" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label>ملاحظات إضافية</label>
+            <textarea id="additionalNotes"></textarea>
+          </div>
+
+          <div class="form-group price-field">
+            <label>سعر المراجعة (دينار عراقي)</label>
+            <input type="number" id="visitPrice" required>
+          </div>
+          
+          <button type="submit" class="btn">حفظ الزيارة</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="medicalHistorySection" style="display: none;">
+      <div class="form-container">
+        <h2>البحث عن سجل المريضة</h2>
+        <div class="form-group">
+          <input type="text" placeholder="ادخلي رقم الهاتف للبحث..." onkeyup="searchPatient(this.value)">
+        </div>
+      </div>
+      
+      <div class="medical-history" id="historyContainer"></div>
+    </div>
+
+    <div id="appointmentsSection" style="display: none;">
+      <div class="form-container">
+        <h2>جدول المواعيد الأسبوعي</h2>
+        <div id="appointmentsCalendar"></div>
+      </div>
+    </div>
+
+    <div id="pregnancyFollowupSection" style="display: none;">
+      <div class="form-container">
+        <h2>متابعة الحمل</h2>
+        <div class="form-group">
+          <label>بحث عن المريضة</label>
+          <input type="text" placeholder="ابحث بالاسم أو رقم الهاتف..." onkeyup="searchPregnantPatient(this.value)">
+        </div>
+        
+        <div id="pregnancyPatientInfo" style="display: none;">
+          <div class="pregnancy-timeline">
+            <div class="progress-indicator" style="width: 0%"></div>
+          </div>
+          
+          <div class="stats-grid">
+            <div class="stat-card">
+              <h3>أسبوع الحمل</h3>
+              <p id="pregnancyWeekDisplay">0</p>
+            </div>
+            <div class="stat-card">
+              <h3>موعد الولادة المتوقع</h3>
+              <p id="expectedDeliveryDate">-</p>
+            </div>
+            <div class="stat-card">
+              <h3>وزن الأم</h3>
+              <p id="motherWeight">-</p>
+            </div>
+            <div class="stat-card">
+              <h3>ضغط الدم</h3>
+              <p id="bloodPressure">-</p>
+            </div>
+          </div>
+
+          <div class="form-group pregnancy-tracking">
+            <div class="vitals-grid">
+              <div class="vital-input">
+                <label>وزن الجنين التقديري</label>
+                <input type="number" id="fetalWeight" step="0.01">
+                <span>كغم</span>
+              </div>
+              <div class="vital-input">
+                <label>نبض الجنين</label>
+                <input type="number" id="fetalHeartRate">
+                <span>نبضة/دقيقة</span>
+              </div>
+              <div class="vital-input">
+                <label>مؤشر السائل الأمنيوسي</label>
+                <input type="number" id="amniotic" step="0.1">
+              </div>
+            </div>
+            
+            <div class="pregnancy-notes">
+              <h3>ملاحظات المتابعة</h3>
+              <div class="checkup-grid">
+                <label><input type="checkbox"> فحص السكر</label>
+                <label><input type="checkbox"> فحص الحديد</label>
+                <label><input type="checkbox"> موجات فوق صوتية</label>
+                <label><input type="checkbox"> فحص البول</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>المواعيد القادمة</label>
+            <div id="upcomingAppointments" class="appointments-list"></div>
+            <button class="btn" onclick="scheduleNextAppointment()">إضافة موعد جديد</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="print-footer">
+      <div class="receipt">
+        <div class="receipt-header">
+          <div class="receipt-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 100 100">
+              <path d="M50 5C25.2 5 5 25.2 5 50s20.2 45 45 45 45-20.2 45-45S74.8 5 50 5zm0 80c-19.3 0-35-15.7-35-35s15.7-35 35-35 35 15.7 35 35-15.7 35-35 35z"/>
+            </svg>
+          </div>
+          <h2>عيادة د. وركاء للنساء والتوليد</h2>
+          <p>استشارية النساء والتوليد والعقم</p>
+          <p>هاتف: 123-456-789</p>
+        </div>
+
+        <div class="receipt-details">
+          <div class="receipt-row">
+            <span>رقم المريض:</span>
+            <span id="patientNumber"></span>
+          </div>
+          <div class="receipt-row">
+            <span>رقم المراجعة:</span>
+            <span id="visitNumber"></span>
+          </div>
+          <div class="receipt-row">
+            <span>التاريخ:</span>
+            <span id="visitDate"></span>
+          </div>
+          <div class="receipt-row">
+            <span>اسم المريضة:</span>
+            <span id="receiptName"></span>
+          </div>
+          <div class="receipt-row">
+            <span>رقم الهاتف:</span>
+            <span id="receiptPhone"></span>
+          </div>
+          <div class="receipt-row">
+            <span>الشكوى الرئيسية:</span>
+            <span id="receiptComplaint"></span>
+          </div>
+          <div class="receipt-row">
+            <span>سعر المراجعة:</span>
+            <span id="receiptPrice"></span>
+          </div>
+        </div>
+
+        <div class="treatment-section">
+          <h3>العلاج والتوصيات:</h3>
+          <div style="min-height: 200px; border-bottom: 1px dashed #ccc;"></div>
+        </div>
+
+        <div class="doctor-signature">
+          <p>توقيع الطبيبة</p>
+          <p>د. وركاء</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notification" id="notification"></div>
+
+  <script>
+    let visits = [];
+    let patients = [];
+    let lastPatientNumber = 0;
+    let currentPatientData = null;
+
+    function saveDataToStorage() {
+      localStorage.setItem('clinicVisits', JSON.stringify(visits));
+      localStorage.setItem('clinicPatients', JSON.stringify(patients)); 
+      localStorage.setItem('lastPatientNumber', lastPatientNumber);
+    }
+
+    function loadDataFromStorage() {
+      visits = JSON.parse(localStorage.getItem('clinicVisits')) || [];
+      patients = JSON.parse(localStorage.getItem('clinicPatients')) || [];
+      lastPatientNumber = parseInt(localStorage.getItem('lastPatientNumber')) || 0;
+    }
+
+    document.addEventListener('DOMContentLoaded', loadDataFromStorage);
+
+    function showTab(tabName) {
+      const dashboard = document.querySelector('.dashboard');
+      dashboard.style.display = 'none';
+      
+      const backButton = document.getElementById('backButton');
+      backButton.style.display = tabName === 'home' ? 'none' : 'block';
+
+      const sections = ['newVisitSection', 'medicalHistorySection', 'appointmentsSection', 
+                       'pregnancyFollowupSection', 'reportsSection', 'settingsSection'];
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+
+      if (tabName === 'home') {
+        dashboard.style.display = 'grid';
+      } else {
+        const section = document.getElementById(`${tabName}Section`);
+        if (section) {
+          section.style.display = 'block';
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+
+    function saveVisit(event) {
+      event.preventDefault();
+      
+      const formData = {
+        patientName: document.getElementById('patientName').value,
+        patientAge: document.getElementById('patientAge').value,
+        patientPhone: document.getElementById('patientPhone').value,
+        visitType: document.getElementById('visitType').value,
+        healthStatus: document.getElementById('healthStatus').value,
+        mainComplaint: document.getElementById('mainComplaint').value,
+        additionalNotes: document.getElementById('additionalNotes').value,
+        price: document.getElementById('visitPrice').value,
+        date: new Date().toLocaleDateString('ar-IQ')
+      };
+
+      const errors = validateForm(formData);
+      if (errors.length > 0) {
+        alert(errors.join('\n'));
+        return;
+      }
+
+      const phone = formData.patientPhone;
+      const existingPatient = patients.find(p => p.phone === phone);
+      let patientNumber;
+      
+      if (existingPatient) {
+        patientNumber = existingPatient.patientNumber;
+      } else {
+        lastPatientNumber++;
+        patientNumber = lastPatientNumber;
+        
+        patients.push({
+          name: formData.patientName,
+          phone: phone,
+          age: formData.patientAge,
+          patientNumber: patientNumber
+        });
+      }
+      
+      const visitNumber = visits.length + 1;
+      
+      const visit = {
+        id: Date.now(),
+        visitNumber: visitNumber,
+        patientNumber: patientNumber,
+        patientName: formData.patientName,
+        patientAge: formData.patientAge,
+        patientPhone: phone,
+        visitType: formData.visitType,
+        healthStatus: formData.healthStatus,
+        mainComplaint: formData.mainComplaint,
+        additionalNotes: formData.additionalNotes,
+        price: formData.price,
+        date: formData.date
+      };
+
+      visits.push(visit);
+      saveDataToStorage(); // Save after adding new visit
+      
+      document.getElementById('patientNumber').textContent = patientNumber;
+      document.getElementById('visitNumber').textContent = visitNumber;
+      document.getElementById('visitDate').textContent = visit.date;
+      document.getElementById('receiptName').textContent = visit.patientName;
+      document.getElementById('receiptPhone').textContent = visit.patientPhone;
+      document.getElementById('receiptComplaint').textContent = visit.mainComplaint;
+      document.getElementById('receiptPrice').textContent = `${visit.price} دينار عراقي`;
+
+      showNotification('تم حفظ الزيارة بنجاح');
+      
+      setTimeout(() => {
+        printVisit();
+      }, 500);
+
+      event.target.reset();
+    }
+
+    function searchPatient(searchValue) {
+      if (!searchValue) return;
+      
+      const patient = enhancedSearch(searchValue);
+      if (patient.length > 0) {
+        const foundPatient = patient[0];
+        document.getElementById('patientName').value = foundPatient.name;
+        document.getElementById('patientAge').value = foundPatient.age;
+        document.getElementById('patientPhone').value = foundPatient.phone;
+        
+        const historyContainer = document.getElementById('historyContainer');
+        if (historyContainer) {
+          const patientVisits = visits.filter(v => v.patientNumber === foundPatient.patientNumber);
+          displayPatientHistory(patientVisits);
+        }
+      }
+    }
+
+    function enhancedSearch(searchValue) {
+      return patients.filter(patient => {
+        const searchTerms = searchValue.toLowerCase().split(' ');
+        const patientString = `${patient.name} ${patient.phone}`.toLowerCase();
+        return searchTerms.every(term => patientString.includes(term));
+      });
+    }
+
+    function displayPatientHistory(patientVisits) {
+      const historyContainer = document.getElementById('historyContainer');
+      if (!patientVisits || patientVisits.length === 0) {
+        historyContainer.innerHTML = '<p>لا توجد سجلات لهذه المريضة</p>';
+        return;
+      }
+
+      historyContainer.innerHTML = patientVisits.map(visit => `
+        <div class="visit-card">
+          <h3>رقم المريض: ${visit.patientNumber}</h3>
+          <h3>رقم المراجعة: ${visit.visitNumber}</h3>
+          <h3>زيارة بتاريخ ${visit.date}</h3>
+          <p>نوع الزيارة: ${visit.visitType === 'first' ? 'أولى' : 
+                           visit.visitType === 'followup' ? 'متابعة' : 'متابعة حمل'}</p>
+          <p>الحالة الصحية: ${visit.healthStatus}</p>
+          <p>الشكوى الرئيسية: ${visit.mainComplaint}</p>
+          ${visit.additionalNotes ? `<p>ملاحظات: ${visit.additionalNotes}</p>` : ''}
+          <p>سعر المراجعة: ${visit.price}</p>
+        </div>
+      `).join('');
+    }
+
+    function showNotification(message) {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.style.display = 'block';
+      
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 3000);
+    }
+
+    function printVisit() {
+      // Hide any unwanted elements before printing
+      const elementsToHide = document.querySelectorAll('.container > *:not(.print-footer)');
+      elementsToHide.forEach(el => el.style.display = 'none');
+      
+      window.print();
+      
+      // Restore visibility after printing
+      elementsToHide.forEach(el => el.style.display = '');
+    }
+
+    function calculatePregnancyProgress(lastPeriodDate) {
+      const today = new Date();
+      const start = new Date(lastPeriodDate);
+      const totalDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+      const weeks = Math.floor(totalDays / 7);
+      
+      document.querySelector('.progress-indicator').style.width = `${(weeks / 40) * 100}%`;
+      document.getElementById('pregnancyWeekDisplay').textContent = weeks;
+      
+      const deliveryDate = new Date(start);
+      deliveryDate.setDate(deliveryDate.getDate() + 280);
+      document.getElementById('expectedDeliveryDate').textContent = 
+        deliveryDate.toLocaleDateString('ar-IQ');
+    }
+
+    function validateForm(formData) {
+      const errors = [];
+      
+      if (!formData.patientName || formData.patientName.length < 3)
+        errors.push('يرجى إدخال اسم المريض بشكل صحيح');
+        
+      if (!formData.patientPhone || !/^\d{8,}$/.test(formData.patientPhone))
+        errors.push('يرجى إدخال رقم هاتف صحيح');
+        
+      if (!formData.patientAge || formData.patientAge < 1 || formData.patientAge > 100)
+        errors.push('يرجى إدخال عمر صحيح');
+        
+      return errors;
+    }
+
+    document.getElementById('healthStatus').addEventListener('change', function(e) {
+      document.getElementById('pregnancyDetails').style.display = 
+        e.target.value === 'pregnant' ? 'block' : 'none';
+    });
+
+    document.getElementById('patientName').addEventListener('input', function(e) {
+      searchPatient(e.target.value);
+    });
+
+    document.getElementById('patientPhone').addEventListener('input', function(e) {
+      searchPatient(e.target.value);
+    });
+
+    function searchPregnantPatient(value) {
+      if (!value) return;
+      
+      const patient = enhancedSearch(value);
+      if (patient.length > 0) {
+        const pregnancyVisits = visits.filter(v => 
+          v.patientNumber === patient[0].patientNumber && 
+          v.visitType === 'pregnancy'
+        );
+        
+        if (pregnancyVisits.length > 0) {
+          document.getElementById('pregnancyPatientInfo').style.display = 'block';
+          const lastVisit = pregnancyVisits[pregnancyVisits.length - 1];
+          updatePregnancyInfo(lastVisit);
+        }
+      }
+    }
+
+    function updatePregnancyInfo(visit) {
+      if (visit.lastPeriod) {
+        calculatePregnancyProgress(visit.lastPeriod);
+      }
+      
+      if (visit.motherWeight) {
+        document.getElementById('motherWeight').textContent = visit.motherWeight + ' كغم';
+      }
+      
+      if (visit.bloodPressure) {
+        document.getElementById('bloodPressure').textContent = visit.bloodPressure;
+      }
+    }
+
+    function scheduleNextAppointment() {
+      const date = prompt('أدخل موعد الزيارة القادمة:');
+      if (date) {
+        const appointmentsList = document.getElementById('upcomingAppointments');
+        const appointment = document.createElement('div');
+        appointment.textContent = `موعد قادم: ${date}`;
+        appointmentsList.appendChild(appointment);
+      }
+    }
+
+    document.querySelectorAll('.dashboard-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const tabName = this.getAttribute('onclick').match(/'(.*?)'/)[1];
+        showTab(tabName);
+      });
+    });
+
+  </script>
+</body></html>
